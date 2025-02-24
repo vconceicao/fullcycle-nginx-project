@@ -22,8 +22,7 @@ services:
     container_name: app
     volumes:
       - ./node:/usr/src/app
-      - node_modules:/usr/src/app/node_modules
-
+    entrypoint: sh -c "npm install && node index.js"
     depends_on:
       db:
        condition: service_healthy
@@ -56,6 +55,3 @@ services:
 networks:
   nodenetwork:
     driver: bridge
-
-volumes:
-  node_modules:
